@@ -22,6 +22,7 @@ The subcriber program again asks the user to choose from any available ports and
 After choosing the publisher and topic, the subscriber directly connects to the publisher and receives information from the subscribed publisher. If a publishing subscriber dies it listens to the network to see if there is any other avialble publisher sending out the information. If so it will connect itself to the next publisher according to ownership_strength list.
 
 ***Some features we have tried to implement in our work***
+
 1) ***History***
 Every subsriber which joins in late will get all the information from the beginning which the publisher has sent. For this we have implemented a buffer which stores in all the information as a list and sends it to the subscriber along with the current information and topic.
 To be precise, a publisher will send (current information, topic, history)
@@ -32,7 +33,7 @@ The broker is responsible to maintain the ownership strength. As soon as it gets
 
 This feature has been implemented through a random generator. All the available publisher information is sent to the a shuffle operation and the first publisher in the list will be assigned the highest strength and hence will have the ownership. So, if a publisher dies sometime inbetween the subscriber tries o connct to the next available publisher in order before iterating through the ownership list.
 
-3) ***Dieing Publisher**
+3) ***Dieing Publisher***
 The other important feature we have tried to implement is the dieing publisher pattern. So, if a publisher dies or it stops sending information, the subscriber then has to connect or receive information from the other available publishers.
 
 Taking this idea into reference we have built a pattern where, if any of the publisher dies when it is connected to a subscriber, then the subscriber waits for the next avialble publisher. It polls every 10seconds to find out if it has received the information. 
@@ -50,6 +51,7 @@ To avoid any possible network congestion, we decided to implement a brokerless d
 
 ***Test cases***
 Some interesting test cases which would suite our implementation are:
+
 1)***One publisher with one subscriber***
 
 
