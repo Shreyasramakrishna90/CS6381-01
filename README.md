@@ -25,7 +25,9 @@ After choosing the publisher and topic, the subscriber directly connects to the 
 
 1) ***History***
 Every subsriber which joins in late will get all the information from the beginning which the publisher has sent. For this we have implemented a buffer which stores in all the information as a list and sends it to the subscriber along with the current information and topic.
+
 To be precise, a publisher will send (current information, topic, history)
+
 The only drawback of our implementation is that every subscriber recives all the previous messages from the beginning, this could be a problem when the publisher intends to send huge amout of data. The publisher sends out the whole history everytime along with the data.
 
 2) ***Ownership strength***
@@ -47,7 +49,7 @@ To avoid any possible network congestion, we decided to implement a brokerless d
 ***Possible improvements to our implementation***
 1) Currently our publisher can handle only one topic at a time. We are working on improving the capability for it to implement multiple topics concurrantly.
 
-2)Our implementation is oriented for small networks with maximum of 10 publishers and multiple subscribers. We would like extend its capabilities to perform better for larger networks too.
+ 2)Our implementation is oriented for small networks with maximum of 10 publishers and multiple subscribers. We would like extend its capabilities to perform better for larger networks too.
 
 3) We would also like to add the publisher oriented history feature for our implementation. 
 
