@@ -164,11 +164,8 @@ Expected output:By running the second subscriber little late, it could be seen t
 1)***One publisher with one subscriber***
 ```
 ####################################################################################
-1.Start up 3 terminals. 
-2.Run the script pub.py in the first terminal using ***python pub.py***
-3.Run the script sub.py.in the second terminal using ***python sub.py***
-4.Run the script broker.py in the third terminal using ***python broker.py***
-
+1.Start with 1 terminal. 
+2.Run the mininet script ***sudo python mininet.py -p 1 -s 1 -T 1***
 Expected output:The subscriber receives all the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
@@ -176,13 +173,21 @@ Expected output:The subscriber receives all the information from publisher in fo
 2)***One publisher with multiple subscribers***
 ```
 ####################################################################################
-1.Start up 4 terminals. 
-2.Run the script pub.py in the first terminal using ***python pub.py***
-3.Run the script sub.py.in the second terminal using ***python sub.py***
-4.Run the script sub.py.in the third terminal using ***python sub.py***
-5.Run the script broker.py in the fourth terminal using ***python broker.py***
-6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
+1.Start with 1 terminal. 
+2.Run the mininet script ***sudo python mininet.py -p 1 -s 2 -T 1***
 Expected output:The two subscriber receives the information from publisher in format (topic, current streaming data, History)
+###################################################################################
+```
+
+***Testing with different topologies***
+
+1) ***Singleswitch Topology***
+```
+####################################################################################
+1.Start with 1 terminal. 
+2.Run the mininet script ***sudo python mininet.py -p 1 -s 2 -T 1***
+3.We are implementing one publisher and two subscribers.
+Expected output:By typing in T=1, the user will be selecting the singleswitch topology. 
 ###################################################################################
 ```
 
