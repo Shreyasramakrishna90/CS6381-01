@@ -1,8 +1,9 @@
-#This program implements all the zmq socket operations. We have different functions to perform the publisher_register, subscriber_connect.
-#We also have implemented the dieing subscriber requirement in the publisher_connect part of the implementation.
-#We import all the functions written in this code to our main programs of pub, sub and broker_mw1
-#Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
-
+'''
+This program implements all the zmq socket operations. We have different functions to perform the publisher_register, subscriber_connect.
+We also have implemented the dieing subscriber requirement in the publisher_connect part of the implementation.
+We import all the functions written in this code to our main programs of pub, sub and broker_mw1
+Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
+'''
 
 import zmq
 import time
