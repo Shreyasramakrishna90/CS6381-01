@@ -1,10 +1,11 @@
-#This is our subscriber program, all the functions can be found in the connections.py program.
-#The available publishers along with previous ones are displayed to the subscribers for selection.
-#The users can select any of the publisher ports and topics for communication.
-#If the publisher number and topics match, then the subscriber will start receiving the information from the subscribed publisher.
-#One publisher can have multiple subscribers.
-#Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
-
+'''
+This is our subscriber program, all the functions can be found in the connections.py program.
+The available publishers along with previous ones are displayed to the subscribers for selection.
+The users can select any of the publisher ports and topics for communication.
+If the publisher number and topics match, then the subscriber will start receiving the information from the subscribed publisher.
+One publisher can have multiple subscribers.
+Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
+'''
 
 
 
