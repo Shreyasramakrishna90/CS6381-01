@@ -77,7 +77,7 @@ Some interesting test cases which would suite our implementation are:
 3.Run the script sub.py.in the second terminal using ***python sub.py***
 4.Run the script broker.py in the third terminal using ***python broker.py***
 
-***Expected output*** The subscriber receives all the information from publisher in format (topic, current streaming data, History)
+Expected output:The subscriber receives all the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
 2)***One publisher with multiple subscriber***
@@ -90,7 +90,7 @@ Some interesting test cases which would suite our implementation are:
 5.Run the script broker.py in the fourth terminal using ***python broker.py***
 6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
 
-***Expected output*** The two subscriber receives the information from publisher in format (topic, current streaming data, History)
+Expected output:The two subscriber receives the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
 3)***Two publishers and many subscriber****
@@ -103,7 +103,7 @@ Some interesting test cases which would suite our implementation are:
 5.Run the script sub.py.in the fourth terminal using ***python sub.py***
 6.Run the script broker.py in the fifth terminal using ***python broker.py***
 
-***Expected output*** The whole idea of multiple pub-sub implementation can be obtained by running this test.
+Expected output:The whole idea of multiple pub-sub implementation can be obtained by running this test.
 ###################################################################################
 ```
 
@@ -116,7 +116,7 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script sub.py.in the third terminal using ***python sub.py***
 5.Run the script broker.py in the fourth terminal using ***python broker.py***
 
-***Expected output*** Run the second subsriber with a little delay to see that the second subscriber would start receiving the current streamed data along with the history list.
+Expected output:Run the second subsriber with a little delay to see that the second subscriber would start receiving the current streamed data along with the history list.
 ###################################################################################
 ```
 
@@ -130,7 +130,7 @@ Some interesting test cases which would suite our implementation are:
 5.Run the script sub.py.in the fourth terminal using ***python sub.py***
 6.Run the script broker.py in the fifth terminal using ***python broker.py***
 
-***Expected output*** Try to run the two subscribers with some delay to see that a dieing subscriber would look for the next publisher in the ownership order to connect. If the second publisher in the list is not available, then it waits and listens for some time. 
+Expected output:Try to run the two subscribers with some delay to see that a dieing subscriber would look for the next publisher in the ownership order to connect. If the second publisher in the list is not available, then it waits and listens for some time. 
 ###################################################################################
 ```
 
@@ -142,7 +142,7 @@ Some interesting test cases which would suite our implementation are:
 3.Run the script sub.py.in the second terminal using ***python sub.py***
 4.Run the script broker.py in the third terminal using ***python broker.py***
 
-***Expected output*** On behalf of the subscriber, you will be asked to enter the subscription time, anything between (0-20) should be chosen as the subscription number. (For testing simplicity our publisher publishes only 20 numbers, so that you dont have to wait for long testing time)
+Expected output:On behalf of the subscriber, you will be asked to enter the subscription time, anything between (0-20) should be chosen as the subscription number. (For testing simplicity our publisher publishes only 20 numbers, so that you dont have to wait for long testing time)
 ###################################################################################
 ```
 
@@ -155,7 +155,7 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script sub.py.in the third terminal using ***python sub.py***
 5.Run the script broker.py in the fourth terminal using ***python broker.py***
 6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
-***Expected output*** By running the second subscriber little late, it could be seen that the subscriber asks the broker for information about publisher. This data retreival is performed using pollers in zmq.
+Expected output:By running the second subscriber little late, it could be seen that the subscriber asks the broker for information about publisher. This data retreival is performed using pollers in zmq.
 ###################################################################################
 ```
 
@@ -169,7 +169,7 @@ Some interesting test cases which would suite our implementation are:
 3.Run the script sub.py.in the second terminal using ***python sub.py***
 4.Run the script broker.py in the third terminal using ***python broker.py***
 
-***Expected output*** The subscriber receives all the information from publisher in format (topic, current streaming data, History)
+Expected output:The subscriber receives all the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
 
@@ -182,7 +182,7 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script sub.py.in the third terminal using ***python sub.py***
 5.Run the script broker.py in the fourth terminal using ***python broker.py***
 6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
-***Expected output*** The two subscriber receives the information from publisher in format (topic, current streaming data, History)
+Expected output:The two subscriber receives the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
 
