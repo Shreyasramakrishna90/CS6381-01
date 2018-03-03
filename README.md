@@ -78,7 +78,6 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script broker.py in the third terminal using ***python broker.py***
 
 ***Expected output*** The subscriber receives all the information from publisher in format (topic, current streaming data, History)
-
 ###################################################################################
 ```
 2)***One publisher with multiple subscriber***
@@ -90,6 +89,7 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script sub.py.in the third terminal using ***python sub.py***
 5.Run the script broker.py in the fourth terminal using ***python broker.py***
 6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
+
 ***Expected output*** The two subscriber receives the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
@@ -117,7 +117,6 @@ Some interesting test cases which would suite our implementation are:
 5.Run the script broker.py in the fourth terminal using ***python broker.py***
 
 ***Expected output*** Run the second subsriber with a little delay to see that the second subscriber would start receiving the current streamed data along with the history list.
-
 ###################################################################################
 ```
 
@@ -144,7 +143,6 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script broker.py in the third terminal using ***python broker.py***
 
 ***Expected output*** On behalf of the subscriber, you will be asked to enter the subscription time, anything between (0-20) should be chosen as the subscription number. (For testing simplicity our publisher publishes only 20 numbers, so that you dont have to wait for long testing time)
-
 ###################################################################################
 ```
 
@@ -172,7 +170,6 @@ Some interesting test cases which would suite our implementation are:
 4.Run the script broker.py in the third terminal using ***python broker.py***
 
 ***Expected output*** The subscriber receives all the information from publisher in format (topic, current streaming data, History)
-
 ###################################################################################
 ```
 
