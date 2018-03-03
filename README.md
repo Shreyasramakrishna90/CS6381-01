@@ -42,9 +42,13 @@ Taking this idea into reference we have built a pattern where, if any of the pub
 
 Only disadvantage with our implementation is that the subscriber waits to hear out for something in the network. It just polls every 10seconds to listen for some data on the socket.
 
-***Data exchange***
-To avoid any possible network congestion, we decided to implement a brokerless data exchange between the publisher and subscriber. So, the broker is only responsible for managing all the pub/sub data. The actual data transfer takes place directly between the respective pub/sub.
+4) ***Subscriber Disconnection***
+Whenever a subscriber wants to unsubscribe the services of a publisher, it can opt for it. The subscriber at the beginning will be asked about its requirments and the time for which it requires the subscription. The subscriber can choose it at will and then exit after it has received the preriodic service.
 
+***Data exchange***
+5)To avoid any possible network congestion, we decided to implement a brokerless data exchange between the publisher and subscriber. So, the broker is only responsible for managing all the pub/sub data. The actual data transfer takes place directly between the respective pub/sub.
+
+However in the other part of our implementation we are trying to involve the broker even for communication. Here we are trying to work on the zmq.proxy(),which we have not implemented in our current implementation. 
 
 ***Possible improvements to our implementation***
 1) Currently our publisher can handle only one topic at a time. We are working on improving the capability for it to implement multiple topics concurrantly.
@@ -53,18 +57,140 @@ To avoid any possible network congestion, we decided to implement a brokerless d
 
 3) We would also like to add the publisher oriented history feature for our implementation. 
 
-***Test cases***
+***Testing Tips***
+```
+Since many cases have to be tested, we have taken a few implementation decisions.
+1)The publisher is always publishing 20 numbers (for simplicity and reduction of testing time)
+2)Kindly give some time delay (atleast 1min) when there are subsequent publishers and subscribers. We have synchronized the implementation with some sleep time inbetween, so that you could undertand the details printed in the terminal.
+3)Kindly start the broker.py first. It made sense for us run the broker in the beginning and then the publisher followed by subscriber.
+```
+
+***Terminal Test cases***
 Some interesting test cases which would suite our implementation are:
 
 1)***One publisher with one subscriber***
+```
+####################################################################################
+1.Start up 3 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script broker.py in the third terminal using ***python broker.py***
 
+***Expected output*** The subscriber receives all the information from publisher in format (topic, current streaming data, History)
 
+###################################################################################
+```
 2)***One publisher with multiple subscriber***
+```
+####################################################################################
+1.Start up 4 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script sub.py.in the third terminal using ***python sub.py***
+5.Run the script broker.py in the fourth terminal using ***python broker.py***
+6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
+***Expected output*** The two subscriber receives the information from publisher in format (topic, current streaming data, History)
+###################################################################################
+```
+3)***Two publishers and many subscriber****
+```
+####################################################################################
+1.Start up 5 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script pub.py in the second terminal using ***python pub.py***
+4.Run the script sub.py.in the third terminal using ***python sub.py***
+5.Run the script sub.py.in the fourth terminal using ***python sub.py***
+6.Run the script broker.py in the fifth terminal using ***python broker.py***
 
+***Expected output*** The whole idea of multiple pub-sub implementation can be obtained by running this test.
+###################################################################################
+```
 
-3)***Three publishers and many subscriber**** 
+4)***Data History***
+```
+####################################################################################
+1.Start up 4 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script sub.py.in the third terminal using ***python sub.py***
+5.Run the script broker.py in the fourth terminal using ***python broker.py***
 
+***Expected output*** Run the second subsriber with a little delay to see that the second subscriber would start receiving the current streamed data along with the history list.
+
+###################################################################################
+```
+
+5)***Ownership strength***
+```
+####################################################################################
+1.Start up 5 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script pub.py in the second terminal using ***python pub.py***
+4.Run the script pub.py.in the Third terminal using ***python pub.py***
+5.Run the script sub.py.in the fourth terminal using ***python sub.py***
+6.Run the script broker.py in the fifth terminal using ***python broker.py***
+
+***Expected output*** Try to run the two subscribers with some delay to see that a dieing subscriber would look for the next publisher in the ownership order to connect. If the second publisher in the list is not available, then it waits and listens for some time. 
+###################################################################################
+```
+
+6)***Unsubscription of subscribers at will***
+```
+####################################################################################
+1.Start up 3 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script broker.py in the third terminal using ***python broker.py***
+
+***Expected output*** On behalf of the subscriber, you will be asked to enter the subscription time, anything between (0-20) should be chosen as the subscription number. (For testing simplicity our publisher publishes only 20 numbers, so that you dont have to wait for long testing time)
+
+###################################################################################
+```
+
+7)***Pollers to determine the joining of publishers and subscribers***
+```
+####################################################################################
+1.Start up 4 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script sub.py.in the third terminal using ***python sub.py***
+5.Run the script broker.py in the fourth terminal using ***python broker.py***
+6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
+***Expected output*** By running the second subscriber little late, it could be seen that the subscriber asks the broker for information about publisher. This data retreival is performed using pollers in zmq.
+###################################################################################
+```
+
+***Mininet Test cases***
+1)***One publisher with one subscriber***
+```
+####################################################################################
+1.Start up 3 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script broker.py in the third terminal using ***python broker.py***
+
+***Expected output*** The subscriber receives all the information from publisher in format (topic, current streaming data, History)
+
+###################################################################################
+```
+
+2)***One publisher with multiple subscribers***
+```
+####################################################################################
+1.Start up 4 terminals. 
+2.Run the script pub.py in the first terminal using ***python pub.py***
+3.Run the script sub.py.in the second terminal using ***python sub.py***
+4.Run the script sub.py.in the third terminal using ***python sub.py***
+5.Run the script broker.py in the fourth terminal using ***python broker.py***
+6. Start in the subscriber2 script a little late to understand how the delayed subscriber receives the current streaming data along with history.
+***Expected output*** The two subscriber receives the information from publisher in format (topic, current streaming data, History)
+###################################################################################
+```
 
 
 
 ***Results***
+We just did some time measurements:
+***One publisher with one subscriber***
+***One publisher with multiple subscribers***
+
