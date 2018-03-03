@@ -1,11 +1,12 @@
-#This is the broker middleware we have created.
-#This program is responsible for communicating with the publisher and subscriber.
-#One part of the code looks after the communication between the publisher and the broker. All the initial communication about topic and port info is sent to broker.
-#The Broker assigns ownership order through a random generator.
-#The Broker then sends all the inofrmation to the subscriber.
-#We have implemented two reply-request patterns to accomplish this implementation.
-#Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
-
+'''
+This is the broker middleware we have created.
+This program is responsible for communicating with the publisher and subscriber.
+One part of the code looks after the communication between the publisher and the broker. All the initial communication about topic and port info is sent to broker.
+The Broker assigns ownership order through a random generator.
+The Broker then sends all the inofrmation to the subscriber.
+We have implemented two reply-request patterns to accomplish this implementation.
+Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
+'''
 
 import time
 import zmq
