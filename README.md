@@ -54,7 +54,7 @@ However in the other part of our implementation we are trying to involve the bro
 ***Possible improvements to our implementation***
 1) Currently our publisher can handle only one topic at a time. We are working on improving the capability for it to implement multiple topics concurrantly.
 
- 2)Our implementation is oriented for small networks with maximum of 10 publishers and multiple subscribers. We would like extend its capabilities to perform better for larger networks too.
+ 2) Our implementation is oriented for small networks with maximum of 10 publishers and multiple subscribers. We would like extend its capabilities to perform better for larger networks too.
 
 3) We would also like to add the publisher oriented history feature for our implementation. 
 
