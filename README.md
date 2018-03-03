@@ -1,5 +1,6 @@
-Distributed System Principles: Assignment1
-We have three codes in this assignment. One each for publisher, broker and subcriber.
+***Distributed System Principles: Assignment1***
+
+We have three codes in this assignment. One each for publisher, broker and subcriber along with a zmq_connections file.
 
 ***Publisher:*** 
 For simplicity we consider having three publishers attached to ports 5600, 5601 and 5602. Similarly each of the publisher can publish under any one of the topics 1, 2, 3 or 4. The user has the freedom to start any of the three publishers and also the topics under which they have to publish.
