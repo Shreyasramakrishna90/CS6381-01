@@ -1,11 +1,12 @@
-#This is our publisher program, all the functions can be found in the connections.py program.
-#There are three assigned ports for our implementation along with a set of topics.
-#The users can select any of the publisher ports and topics for communication.
-#For the simplicity of implementation, we could just assign one topic for each publisher.
-#The register_pub function, sends all the information about the publisher being created to the broker.
-#After the user entry, the create_publisher function starts a publisher running in a thread.
-#Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
-
+'''
+This is our publisher program, all the functions can be found in the connections.py program.
+There are three assigned ports for our implementation along with a set of topics.
+The users can select any of the publisher ports and topics for communication.
+For the simplicity of implementation, we could just assign one topic for each publisher.
+The register_pub function, sends all the information about the publisher being created to the broker.
+After the user entry, the create_publisher function starts a publisher running in a thread.
+Team members: Shreyas Ramakrishna, Veena Nalluri, Sanchita Basak, Anabil Munshi
+'''
 
 
 
