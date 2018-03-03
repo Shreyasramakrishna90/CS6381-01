@@ -1,14 +1,14 @@
 #!/usr/bin/env /usr/local/bin/python /usr/bin/python
 # encoding: utf-8
 
-import os              # OS level utilities
+import os  # OS level utilities
 import sys
-import argparse   # for command line parsing
+import argparse  # for command line parsing
 
 from signal import SIGINT
 import time
 import threading
-#import zmq
+# import zmq
 
 import subprocess
 
@@ -22,22 +22,26 @@ from mininet.util import dumpNodeConnections
 from mininet.log import setLogLevel, info
 from mininet.util import pmonitor
 from SingleSwitchTopology import SingleSwitchTopo
+
+
 ##################################
 # Command line parsing
 ##################################
-def parseCmdLineArgs ():
+def parseCmdLineArgs():
     # parse the command line
-    parser = argparse.ArgumentParser ()
+    parser = argparse.ArgumentParser()
 
     # add optional arguments
-    parser.add_argument ("-p", "--publisher", type=int, default=3, help="Number of publishers, default 3")
-    parser.add_argument ("-s", "--subscriber", type=int, default=5, help="Number of subscriber, default 5")
-    parser.add_argument ("-T", "--topo", type=int, choices= [1,2], default=1, help='Topology choice 1.Single Switch Topology 2. Tree Topology')
+    parser.add_argument("-p", "--publisher", type=int, default=3, help="Number of publishers, default 3")
+    parser.add_argument("-s", "--subscriber", type=int, default=5, help="Number of subscriber, default 5")
+    parser.add_argument("-T", "--topo", type=int, choices=[1, 2], default=1,help='Topology choice 1.Single Switch Topology 2. Tree Topology')
+
 
     # parse the args
-    args = parser.parse_args ()
+    args = parser.parse_args()
 
     return args
+
 
 def broker_helper(brokerHost):
     def broker_op():
@@ -47,35 +51,55 @@ def broker_helper(brokerHost):
         brokerHost.cmd(command)
 
     threading.Thread(target=broker_op, args=()).start()
-    time.sleep(5)
+    time.sleep(1)
 
-def pub_helper(pubHosts,broker_ip):
+
+def pub_helper(pubHosts, broker_ip):
     for pub in pubHosts:
         def pub_op():
-            #print(broker_ip)
-            #print(pubHosts[0].IP())
-            command = 'xterm -e python pub.py -pub ' + pub.IP() + ' -a '+ broker_ip
+            # print(broker_ip)
+            # print(pubHosts[0].IP())
+            command = 'xterm -e python pub.py -pub ' + pub.IP() + ' -a ' + broker_ip
             pub.cmd(command)
-        #print('hi')
+
+
+        # print('hi')
         threading.Thread(target=pub_op, args=()).start()
         time.sleep(len(pubHosts))
 
-def sub_helper(pubHosts,subHosts,broker_ip):
+
+def sub_helper(pubHosts, subHosts, broker_ip):
     # Invoke subscribers
 
-    for sub in subHosts:
+    if(len(subHosts)==1):
         def sub_op():
-            command = 'xterm -e python sub.py -pub ' + pubHosts[0].IP() + ' -a ' + broker_ip
-            sub.cmd(command)
+            command = 'xterm -e python sub.py -pub ' +pubHosts[0].IP() + ' -a ' + broker_ip
+            subHosts[0].cmd(command)
 
         threading.Thread(target=sub_op, args=()).start()
-        time.sleep(150)
+
+    if(len(subHosts)==2):
+        def sub_op():
+            command = 'xterm -e python sub.py -pub ' + pubHosts[0].IP() + ' -a ' + broker_ip
+            subHosts[0].cmd(command)
+
+        threading.Thread(target=sub_op, args=()).start()
+        time.sleep(50)
+
+        def sub_op1():
+            command = 'xterm -e python sub.py -pub ' + pubHosts[1].IP() + ' -a ' + broker_ip
+            subHosts[1].cmd(command)
+
+        threading.Thread(target=sub_op1, args=()).start()
+
+
+
 
 def runTestCase(pubHosts, subHosts, brokerHost):
     broker_ip = brokerHost.IP()
-    pub_helper(pubHosts,broker_ip)
+    pub_helper(pubHosts, broker_ip)
     broker_helper(brokerHost)
-    sub_helper(pubHosts,subHosts,broker_ip)
+    sub_helper(pubHosts, subHosts, broker_ip)
 
     while True:
         pass
@@ -88,18 +112,17 @@ def mainHelper(topo):
 
     # activate the network
     print('Activate network')
-    net.start ()
+    net.start()
 
     # debugging purposes
-    print ('Dumping host connections')
-    dumpNodeConnections (net.hosts)
+    print('Dumping host connections')
+    dumpNodeConnections(net.hosts)
 
     # debugging purposes
-    print ('Testing network connectivity')
-    net.pingAll ()
+    print('Testing network connectivity')
+    net.pingAll()
 
-
-    pubhosts =[]
+    pubhosts = []
     subhosts = []
     brokerhost = None
     for host in net.hosts:
@@ -111,7 +134,7 @@ def mainHelper(topo):
         elif 'Broker' in host.name:
             brokerhost = host
     print('Available hosts are %s' % net.hosts)
-    print('SUB %s\nPUB %s\n Broker %s\n'%(pubhosts, subhosts, brokerhost))
+    print('SUB %s\nPUB %s\n Broker %s\n' % (pubhosts, subhosts, brokerhost))
     runTestCase(pubhosts, subhosts, brokerhost)
 
     net.stop()
@@ -141,4 +164,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-  
+
