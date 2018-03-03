@@ -178,7 +178,23 @@ Expected output:The subscriber receives all the information from publisher in fo
 Expected output:The two subscriber receives the information from publisher in format (topic, current streaming data, History)
 ###################################################################################
 ```
+3)***Two publishers and two subscribers****
+```
+####################################################################################
+1.Start with 1 terminal. 
+2.Run the mininet script ***sudo python mininet.py -p 2 -s 2 -T 1*** 
+Expected output:The whole idea of multiple pub-sub implementation can be obtained by running this test.
+###################################################################################
+```
+4)***Unsubscription of subscribers at will***
+```
+####################################################################################
+1.Start with 1 terminal. 
+2..Run the mininet script ***sudo python mininet.py -p 2 -s 2 -T 1*** 
 
+Expected output:On behalf of the subscriber, you will be asked to enter the subscription time, anything between (0-20) should be chosen as the subscription number. (For testing simplicity our publisher publishes only 20 numbers, so that you dont have to wait for long testing time)
+###################################################################################
+```
 ***Testing with different topologies***
 
 1) ***Singleswitch Topology***
