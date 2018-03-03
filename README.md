@@ -188,9 +188,3 @@ Some interesting test cases which would suite our implementation are:
 ```
 
 
-
-***Results***
-We just did some time measurements:
-***One publisher with one subscriber***
-***One publisher with multiple subscribers***
-
