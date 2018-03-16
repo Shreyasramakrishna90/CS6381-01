@@ -36,7 +36,7 @@ The broker is responsible to maintain the ownership strength. As soon as it gets
 
 This feature has been implemented through a random generator. All the available publisher information is sent to the a shuffle operation and the first publisher in the list will be assigned the highest strength and hence will have the ownership. So, if a publisher dies sometime inbetween the subscriber tries o connct to the next available publisher in order before iterating through the ownership list.
 
-3) ***Dieing Publisher***
+3) ***Dying Publisher***
 The other important feature we have tried to implement is the dieing publisher pattern. So, if a publisher dies or it stops sending information, the subscriber then has to connect or receive information from the other available publishers.
 
 Taking this idea into reference we have built a pattern where, if any of the publisher dies when it is connected to a subscriber, then the subscriber waits for the next avialble publisher. It polls every 10seconds to find out if it has received the information. 
